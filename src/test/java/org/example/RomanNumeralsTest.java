@@ -18,6 +18,7 @@ class RomanNumeralsTest {
       "7, VII",
       "8, VIII",
       "9, IX",
+      "10, X",
   })
   void transforms_number_to_roman(int input, String expected) {
     String result = RomanNumerals.toRoman(input);
