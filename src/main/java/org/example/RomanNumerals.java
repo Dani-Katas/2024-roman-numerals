@@ -4,7 +4,7 @@ public class RomanNumerals {
 
   public static String toRoman(final int number) {
     if (number == 51) {
-      return "L"+ "I";
+      return "L"+ toRoman(number - 50);
     }
     if (number == 50) {
       return "L";
