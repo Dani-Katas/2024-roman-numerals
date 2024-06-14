@@ -3,6 +3,9 @@ package org.example;
 public class RomanNumerals {
 
   public static String toRoman(final int number) {
+    if (number == 50) {
+      return "L";
+    }
     if (number == 40) {
       return "X" + "L";
     }
