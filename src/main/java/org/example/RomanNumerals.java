@@ -16,7 +16,7 @@ public class RomanNumerals {
       return "I";
     }
 
-    if (number == 51) {
+    if (number >= 51) {
       return toRoman(50) + toRoman(number - 50);
     }
     if (number == 40) {
@@ -31,7 +31,6 @@ public class RomanNumerals {
     if (number >= 6) {
       return toRoman(5) + toRoman(number - 5);
     }
-
     if (number == 4) {
       return toRoman(1) + toRoman(5);
     }
