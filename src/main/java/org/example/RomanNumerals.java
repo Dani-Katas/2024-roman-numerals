@@ -16,6 +16,9 @@ public class RomanNumerals {
       return "I";
     }
 
+    if (number == 90) {
+      return "XC";
+    }
     if (number == (50 - 10)) {
       return toRoman(10) + toRoman(number + 10);
     }
