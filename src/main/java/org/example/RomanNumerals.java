@@ -16,23 +16,24 @@ public class RomanNumerals {
       return "I";
     }
 
-    if (number >= 51) {
-      return toRoman(50) + toRoman(number - 50);
-    }
-    if (number == 40) {
+    if (number == (50 - 10)) {
       return toRoman(10) + toRoman(number + 10);
     }
-    if (number >= 11) {
-      return toRoman(10) + toRoman(number - 10);
-    }
-    if (number == 9) {
+    if (number == (10 - 1)) {
       return toRoman(1) + toRoman(number + 1);
     }
-    if (number >= 6) {
-      return toRoman(5) + toRoman(number - 5);
+    if (number == (5 - 1)) {
+      return toRoman(1) + toRoman(number + 1);
     }
-    if (number == 4) {
-      return toRoman(1) + toRoman(5);
+
+    if (number > 50) {
+      return toRoman(50) + toRoman(number - 50);
+    }
+    if (number > 10) {
+      return toRoman(10) + toRoman(number - 10);
+    }
+    if (number > 5) {
+      return toRoman(5) + toRoman(number - 5);
     }
 
     return toRoman(1).repeat(number);
