@@ -39,4 +39,11 @@ public class RomanNumeralsTest {
 
     assertThat(result).isEqualTo("V");
   }
+
+  @Test
+  public void transforms_six_to_roman() {
+    String result = RomanNumerals.toRoman(6);
+
+    assertThat(result).isEqualTo("VI");
+  }
 }
