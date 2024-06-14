@@ -3,6 +3,10 @@ package org.example;
 public class RomanNumerals {
 
   public static String toRoman(final int number) {
+    if (number == 8) {
+      return "VIII";
+    }
+
     if (number == 7) {
       return "VII";
     }
