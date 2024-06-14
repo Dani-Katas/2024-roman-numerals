@@ -2,48 +2,23 @@ package org.example;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-public class RomanNumeralsTest {
-  @Test
-  public void transforms_one_to_roman() {
-    String result = RomanNumerals.toRoman(1);
+class RomanNumeralsTest {
 
-    assertThat(result).isEqualTo("I");
-  }
+  @ParameterizedTest
+  @CsvSource({
+      "1, I",
+      "2, II",
+      "3, III",
+      "4, IV",
+      "5, V",
+      "6, VI"
+  })
+  void transforms_number_to_roman(int input, String expected) {
+    String result = RomanNumerals.toRoman(input);
 
-  @Test
-  public void transforms_two_to_roman() {
-    String result = RomanNumerals.toRoman(2);
-
-    assertThat(result).isEqualTo("II");
-  }
-
-  @Test
-  public void transforms_three_to_roman() {
-    String result = RomanNumerals.toRoman(3);
-
-    assertThat(result).isEqualTo("III");
-  }
-
-  @Test
-  public void transforms_four_to_roman() {
-    String result = RomanNumerals.toRoman(4);
-
-    assertThat(result).isEqualTo("IV");
-  }
-
-  @Test
-  public void transforms_five_to_roman() {
-    String result = RomanNumerals.toRoman(5);
-
-    assertThat(result).isEqualTo("V");
-  }
-
-  @Test
-  public void transforms_six_to_roman() {
-    String result = RomanNumerals.toRoman(6);
-
-    assertThat(result).isEqualTo("VI");
+    assertThat(result).isEqualTo(expected);
   }
 }
