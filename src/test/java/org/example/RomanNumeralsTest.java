@@ -23,6 +23,7 @@ class RomanNumeralsTest {
       "12, XII",
       "13, XIII",
       "40, XL",
+      "50, L",
   })
   void transforms_number_to_roman(int input, String expected) {
     String result = RomanNumerals.toRoman(input);
