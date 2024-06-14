@@ -7,14 +7,15 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class RomanNumeralsTest {
 
-  @ParameterizedTest
+  @ParameterizedTest(name = "{0} in roman numerals is {1}")
   @CsvSource({
       "1, I",
       "2, II",
       "3, III",
       "4, IV",
       "5, V",
-      "6, VI"
+      "6, VI",
+      "7, VII"
   })
   void transforms_number_to_roman(int input, String expected) {
     String result = RomanNumerals.toRoman(input);
