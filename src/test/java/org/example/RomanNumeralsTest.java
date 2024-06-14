@@ -18,4 +18,11 @@ public class RomanNumeralsTest {
 
     assertThat(result).isEqualTo("II");
   }
+
+  @Test
+  public void transforms_three_to_roman() {
+    String result = RomanNumerals.toRoman(3);
+
+    assertThat(result).isEqualTo("III");
+  }
 }
