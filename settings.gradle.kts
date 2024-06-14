@@ -1,2 +1,2 @@
-rootProject.name = "kata-setup-java"
+rootProject.name = "roman-numerals"
 
