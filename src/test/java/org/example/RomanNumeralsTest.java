@@ -32,4 +32,11 @@ public class RomanNumeralsTest {
 
     assertThat(result).isEqualTo("IV");
   }
+
+  @Test
+  public void transforms_five_to_roman() {
+    String result = RomanNumerals.toRoman(5);
+
+    assertThat(result).isEqualTo("V");
+  }
 }
