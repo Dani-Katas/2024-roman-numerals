@@ -25,4 +25,11 @@ public class RomanNumeralsTest {
 
     assertThat(result).isEqualTo("III");
   }
+
+  @Test
+  public void transforms_four_to_roman() {
+    String result = RomanNumerals.toRoman(4);
+
+    assertThat(result).isEqualTo("IV");
+  }
 }
