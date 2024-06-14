@@ -11,4 +11,11 @@ public class RomanNumeralsTest {
 
     assertThat(result).isEqualTo("I");
   }
+
+  @Test
+  public void transforms_two_to_roman() {
+    String result = RomanNumerals.toRoman(2);
+
+    assertThat(result).isEqualTo("II");
+  }
 }
