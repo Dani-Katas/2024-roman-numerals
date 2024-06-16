@@ -25,10 +25,10 @@ public class RomanNumerals {
   }
 
   public static String toRoman(final int number) {
-    for (int i = 0; i < Roman.UNITS.size() - 1; i++) {
-      final String roman1000 = temporalMethod(Roman.UNITS.get(i), number);
-      if (roman1000 != null) {
-        return roman1000;
+    for (Roman roman : Roman.UNITS) {
+      final String symbols = temporalMethod(roman, number);
+      if (symbols != null) {
+        return symbols;
       }
     }
 
