@@ -3,6 +3,14 @@ package org.example;
 public class RomanNumerals {
 
   public static String toRoman(final int number) {
+    if (number == 1000) {
+      return "M";
+    }
+
+    if (number >= 900) {
+      return toRoman(100) + toRoman(1000) + toRoman(number - 900);
+    }
+
     if(number >= 500) {
       return "D" + toRoman(number - 500);
     }
