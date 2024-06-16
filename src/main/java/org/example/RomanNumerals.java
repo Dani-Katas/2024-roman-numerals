@@ -1,6 +1,18 @@
 package org.example;
 
+import java.util.List;
+
 public class RomanNumerals {
+
+  static List<Roman> romans = List.of(
+      new Roman("M", 1000),
+      new Roman("D", 500),
+      new Roman("C", 100),
+      new Roman("L", 50),
+      new Roman("X", 10),
+      new Roman("V", 5),
+      new Roman("I", 1)
+  );
 
   public static String toRoman(final int number) {
     if (number >= 1000) {
