@@ -25,21 +25,50 @@ public record Roman(String symbol, int value) {
   );
 
   public static Stream<Roman> fromArabic(final int number) {
-    for (Roman roman : UNITS) {
-      if (number >= roman.value()) {
-        return Stream.concat(Stream.of(roman), fromArabic(number - roman.value()));
-      }
-
-      Roman restable = roman.getRestable();
-      if (number >= (roman.value() - restable.value())) {
-        return Stream.concat(Stream.of(restable, roman), fromArabic(number - (roman.value() - restable.value())));
-      }
-    }
-
-    return Stream.generate(() -> I).limit(number);
+    return fromArabic(number, Roman.M);
   }
 
-  Roman getRestable() {
+  private static Stream<Roman> fromArabic(final int number, final Roman roman) {
+    if (roman.equals(Roman.I)) {
+      return Stream.generate(() -> I).limit(number);
+    }
+
+    if (number >= roman.value()) {
+      return Stream.concat(Stream.of(roman), fromArabic(number - roman.value()));
+    }
+
+    Roman restable = roman.getRestable();
+    if (number >= (roman.value() - restable.value())) {
+      return Stream.concat(Stream.of(restable, roman), fromArabic(number - (roman.value() - restable.value())));
+    }
+
+    return fromArabic(number, roman.getNext());
+  }
+
+  private Roman getNext() {
+    if (equals(M)) {
+      return D;
+    }
+    if (equals(D)) {
+      return C;
+    }
+    if (equals(C)) {
+      return L;
+    }
+    if (equals(L)) {
+      return X;
+    }
+    if (equals(X)) {
+      return V;
+    }
+    if (equals(V)) {
+      return I;
+    }
+
+    return NO_ROMAN;
+  }
+
+  private Roman getRestable() {
     if (equals(M)) {
       return C;
     }
