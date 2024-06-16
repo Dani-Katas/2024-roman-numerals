@@ -1,18 +1,12 @@
 package org.example;
 
+import static org.example.Roman.UNITS;
+
 import java.util.List;
 
 public class RomanNumerals {
 
-  static List<Roman> romans = List.of(
-      Roman.M,
-      Roman.D,
-      Roman.C,
-      Roman.L,
-      Roman.X,
-      Roman.V,
-      Roman.I
-  );
+  static List<Roman> romans = UNITS;
 
   private static int getRestableFor(final int i) {
     if (i == 1000) {
