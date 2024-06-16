@@ -37,34 +37,11 @@ public class RomanNumerals {
   }
 
   public static String toRoman(final int number) {
-    final String roman1000 = temporalMethod(0, number);
-    if (roman1000 != null) {
-      return roman1000;
-    }
-
-    final String roman500 = temporalMethod(1, number);
-    if (roman500 != null) {
-      return roman500;
-    }
-
-    final String roman100 = temporalMethod(2, number);
-    if (roman100 != null) {
-      return roman100;
-    }
-
-    final String roman50 = temporalMethod(3, number);
-    if (roman50 != null) {
-      return roman50;
-    }
-
-    final String roman10 = temporalMethod(4, number);
-    if (roman10 != null) {
-      return roman10;
-    }
-
-    final String roman5 = temporalMethod(5, number);
-    if (roman5 != null) {
-      return roman5;
+    for (int i = 0; i < romans.size() - 1; i++) {
+      final String roman1000 = temporalMethod(i, number);
+      if (roman1000 != null) {
+        return roman1000;
+      }
     }
 
     return "I".repeat(number);
