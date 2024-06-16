@@ -1,6 +1,28 @@
 package org.example;
 
 public class RomanNumerals {
+  private static Roman getRestableFor(final Roman roman) {
+    if (roman.equals(Roman.M)) {
+      return Roman.C;
+    }
+    if (roman.equals(Roman.D)) {
+      return Roman.C;
+    }
+    if (roman.equals(Roman.C)) {
+      return Roman.X;
+    }
+    if (roman.equals(Roman.L)) {
+      return Roman.X;
+    }
+    if (roman.equals(Roman.X)) {
+      return Roman.I;
+    }
+    if (roman.equals(Roman.V)) {
+      return Roman.I;
+    }
+
+    return new Roman("", 0);
+  }
 
   private static int getRestableFor(final int i) {
     if (i == 1000) {
