@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public record Roman(String symbol, int value) {
 
@@ -23,6 +24,21 @@ public record Roman(String symbol, int value) {
     Roman.I
   );
 
+  public static Stream<Roman> fromArabic(final int number) {
+    for (Roman roman : UNITS) {
+      final int value = roman.value();
+      if (number >= value) {
+        return Stream.concat(Stream.of(roman), fromArabic(number - value));
+      }
+
+      Roman restable = roman.getRestable();
+      if (number >= (value - restable.value())) {
+        return Stream.concat(Stream.of(restable, roman), fromArabic(number - (value - restable.value())));
+      }
+    }
+
+    return Stream.generate(() -> I).limit(number);
+  }
 
   Roman getRestable() {
     if (equals(M)) {
