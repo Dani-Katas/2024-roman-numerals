@@ -3,8 +3,8 @@ package org.example;
 public class RomanNumerals {
 
   public static String toRoman(final int number) {
-    if(number == 100) {
-      return "C";
+    if(number >= 100) {
+      return "C" + toRoman(number - 100);
     }
 
     if(number >= 90) {
