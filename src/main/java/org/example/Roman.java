@@ -20,4 +20,27 @@ public record Roman(String symbol, int value) {
     Roman.V,
     Roman.I
   );
+
+  Roman getRestableFor() {
+    if (equals(M)) {
+      return C;
+    }
+    if (equals(D)) {
+      return C;
+    }
+    if (equals(C)) {
+      return X;
+    }
+    if (equals(L)) {
+      return X;
+    }
+    if (equals(X)) {
+      return I;
+    }
+    if (equals(V)) {
+      return I;
+    }
+
+    return new Roman("", 0);
+  }
 }
