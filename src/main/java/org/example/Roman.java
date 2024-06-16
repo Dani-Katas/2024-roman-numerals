@@ -26,14 +26,13 @@ public record Roman(String symbol, int value) {
 
   public static Stream<Roman> fromArabic(final int number) {
     for (Roman roman : UNITS) {
-      final int value = roman.value();
-      if (number >= value) {
-        return Stream.concat(Stream.of(roman), fromArabic(number - value));
+      if (number >= roman.value()) {
+        return Stream.concat(Stream.of(roman), fromArabic(number - roman.value()));
       }
 
       Roman restable = roman.getRestable();
-      if (number >= (value - restable.value())) {
-        return Stream.concat(Stream.of(restable, roman), fromArabic(number - (value - restable.value())));
+      if (number >= (roman.value() - restable.value())) {
+        return Stream.concat(Stream.of(restable, roman), fromArabic(number - (roman.value() - restable.value())));
       }
     }
 
