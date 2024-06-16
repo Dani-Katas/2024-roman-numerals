@@ -3,15 +3,17 @@ package org.example;
 import java.util.List;
 
 public record Roman(String symbol, int value) {
-  public static Roman M = new Roman("M", 1000);
-  public static Roman D = new Roman("D", 500);
-  public static Roman C = new Roman("C", 100);
-  public static Roman L = new Roman("L", 50);
-  public static Roman X = new Roman("X", 10);
-  public static Roman V = new Roman("V", 5);
-  public static Roman I = new Roman("I", 1);
 
-  public static List<Roman> UNITS = List.of(
+  public static final Roman M = new Roman("M", 1000);
+  public static final Roman D = new Roman("D", 500);
+  public static final Roman C = new Roman("C", 100);
+  public static final Roman L = new Roman("L", 50);
+  public static final Roman X = new Roman("X", 10);
+  public static final Roman V = new Roman("V", 5);
+  public static final Roman I = new Roman("I", 1);
+  public static final Roman NO_ROMAN = new Roman("", 0);
+
+  public static final List<Roman> UNITS = List.of(
     Roman.M,
     Roman.D,
     Roman.C,
@@ -20,6 +22,7 @@ public record Roman(String symbol, int value) {
     Roman.V,
     Roman.I
   );
+
 
   Roman getRestableFor() {
     if (equals(M)) {
@@ -41,6 +44,6 @@ public record Roman(String symbol, int value) {
       return I;
     }
 
-    return new Roman("", 0);
+    return NO_ROMAN;
   }
 }
