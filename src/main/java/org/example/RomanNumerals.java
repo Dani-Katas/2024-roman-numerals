@@ -9,12 +9,12 @@ public class RomanNumerals {
         return roman.symbol() + toRoman(number - value);
       }
 
-      Roman restable = roman.getRestableFor();
+      Roman restable = roman.getRestable();
       if (number >= (value - restable.value())) {
         return toRoman(restable.value()) + toRoman(value) + toRoman(number - (value - restable.value()));
       }
     }
 
-    return "I".repeat(number);
+    return Roman.I.symbol().repeat(number);
   }
 }

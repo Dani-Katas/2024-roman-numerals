@@ -24,7 +24,7 @@ public record Roman(String symbol, int value) {
   );
 
 
-  Roman getRestableFor() {
+  Roman getRestable() {
     if (equals(M)) {
       return C;
     }
