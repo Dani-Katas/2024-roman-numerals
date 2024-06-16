@@ -38,7 +38,7 @@ public class RomanNumerals {
 
   public static String toRoman(final int number) {
     for (int i = 0; i < romans.size() - 1; i++) {
-      final String roman1000 = temporalMethod(i, number);
+      final String roman1000 = temporalMethod(romans.get(i), number);
       if (roman1000 != null) {
         return roman1000;
       }
@@ -47,16 +47,15 @@ public class RomanNumerals {
     return "I".repeat(number);
   }
 
-  private static String temporalMethod(final int index, final int number) {
-    final Roman roman1000 = romans.get(index);
-    final int n1000 = roman1000.value();
-    if (number >= n1000) {
-      return roman1000.symbol() + toRoman(number - n1000);
+  private static String temporalMethod(final Roman roman, final int number) {
+    final int value = roman.value();
+    if (number >= value) {
+      return roman.symbol() + toRoman(number - value);
     }
 
-    int value1000 = getRestableFor(n1000);
-    if (number >= (n1000 - value1000)) {
-      return toRoman(value1000) + toRoman(n1000) + toRoman(number - (n1000 - value1000));
+    int restableValue = getRestableFor(value);
+    if (number >= (value - restableValue)) {
+      return toRoman(restableValue) + toRoman(value) + toRoman(number - (value - restableValue));
     }
     return null;
   }
