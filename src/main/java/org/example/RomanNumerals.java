@@ -26,25 +26,17 @@ public class RomanNumerals {
 
   public static String toRoman(final int number) {
     for (Roman roman : Roman.UNITS) {
-      final String symbols = temporalMethod(roman, number);
-      if (symbols != null) {
-        return symbols;
+      final int value = roman.value();
+      if (number >= value) {
+        return roman.symbol() + toRoman(number - value);
+      }
+
+      int restableValue = getRestableFor(value);
+      if (number >= (value - restableValue)) {
+        return toRoman(restableValue) + toRoman(value) + toRoman(number - (value - restableValue));
       }
     }
 
     return "I".repeat(number);
-  }
-
-  private static String temporalMethod(final Roman roman, final int number) {
-    final int value = roman.value();
-    if (number >= value) {
-      return roman.symbol() + toRoman(number - value);
-    }
-
-    int restableValue = getRestableFor(value);
-    if (number >= (value - restableValue)) {
-      return toRoman(restableValue) + toRoman(value) + toRoman(number - (value - restableValue));
-    }
-    return null;
   }
 }
