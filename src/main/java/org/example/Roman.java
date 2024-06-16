@@ -14,16 +14,6 @@ public record Roman(String symbol, int value) {
   public static final Roman I = new Roman("I", 1);
   public static final Roman NO_ROMAN = new Roman("", 0);
 
-  public static final List<Roman> UNITS = List.of(
-    Roman.M,
-    Roman.D,
-    Roman.C,
-    Roman.L,
-    Roman.X,
-    Roman.V,
-    Roman.I
-  );
-
   public static Stream<Roman> fromArabic(final int number) {
     return fromArabic(number, Roman.M);
   }
