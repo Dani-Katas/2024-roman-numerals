@@ -53,9 +53,9 @@ public class RomanNumerals {
         return roman.symbol() + toRoman(number - value);
       }
 
-      int restableValue = getRestableFor(value);
-      if (number >= (value - restableValue)) {
-        return toRoman(restableValue) + toRoman(value) + toRoman(number - (value - restableValue));
+      Roman restable = getRestableFor(roman);
+      if (number >= (value - restable.value())) {
+        return toRoman(restable.value()) + toRoman(value) + toRoman(number - (value - restable.value()));
       }
     }
 
