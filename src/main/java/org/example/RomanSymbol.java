@@ -15,8 +15,7 @@ public enum RomanSymbol {
     protected Stream<RomanSymbol> fromArabic(final int number) {
       return Stream.generate(() -> RomanSymbol.I).limit(number);
     }
-  },
-  NO_ROMAN(0);
+  };
 
   private final int value;
 
@@ -60,6 +59,6 @@ public enum RomanSymbol {
         .filter(RomanSymbol::canBeSubtracted)
         .filter(roman -> roman.value < this.value)
         .findFirst()
-        .orElse(NO_ROMAN);
+        .orElse(I);
   }
 }
