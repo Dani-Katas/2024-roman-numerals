@@ -11,7 +11,7 @@ public class RomanNumer {
   }
 
   static RomanNumer fromArabic(final int number) {
-    return new RomanNumer(RomanSymbol.fromArabic(number).toList());
+    return new RomanNumer(RomanSymbol.from(number).toList());
   }
 
   @Override

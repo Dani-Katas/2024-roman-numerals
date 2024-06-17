@@ -12,7 +12,7 @@ public enum RomanSymbol {
   V(5),
   I(1) {
     @Override
-    protected Stream<RomanSymbol> tryFromArabic(final int number) {
+    protected Stream<RomanSymbol> fromArabic(final int number) {
       return Stream.generate(() -> RomanSymbol.I).limit(number);
     }
   },
@@ -29,22 +29,22 @@ public enum RomanSymbol {
     this.value = value;
   }
 
-  public static Stream<RomanSymbol> fromArabic(final int number) {
-    return M.tryFromArabic(number);
+  public static Stream<RomanSymbol> from(final int number) {
+    return M.fromArabic(number);
   }
 
-  protected Stream<RomanSymbol> tryFromArabic(final int number) {
+  protected Stream<RomanSymbol> fromArabic(final int number) {
     if (number >= value) {
-      return Stream.concat(Stream.of(this), fromArabic(number - value));
+      return Stream.concat(Stream.of(this), from(number - value));
     }
 
     RomanSymbol subtractiveNumeral = this.subtractiveNumeral();
     final int subtractValue = value - subtractiveNumeral.value;
     if (number >= subtractValue) {
-      return Stream.concat(Stream.of(subtractiveNumeral, this), fromArabic(number - subtractValue));
+      return Stream.concat(Stream.of(subtractiveNumeral, this), from(number - subtractValue));
     }
 
-    return getNext().tryFromArabic(number);
+    return getNext().fromArabic(number);
   }
 
   public RomanSymbol getNext() {
