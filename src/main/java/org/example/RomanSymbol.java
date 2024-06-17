@@ -16,12 +16,7 @@ public enum RomanSymbol {
       return Stream.generate(() -> RomanSymbol.I).limit(number);
     }
   },
-  NO_ROMAN(0) {
-    @Override
-    public String toString() {
-      return "";
-    }
-  };
+  NO_ROMAN(0);
 
   private final int value;
 
