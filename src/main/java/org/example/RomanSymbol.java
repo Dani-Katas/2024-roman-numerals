@@ -47,7 +47,7 @@ public enum RomanSymbol {
     return getNext().fromArabic(number);
   }
 
-  public RomanSymbol getNext() {
+  private RomanSymbol getNext() {
     final List<RomanSymbol> romanSymbols = allValues();
     return romanSymbols.get(romanSymbols.indexOf(this) + 1);
   }
